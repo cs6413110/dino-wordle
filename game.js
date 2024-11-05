@@ -1,6 +1,5 @@
-
-<script>
 document.documentElement.innerHTML += `
+<script src='https://cs6413110.github.io/dino-wordle/config.js'></script>
 <div id='centered'>
   <div id='name'></div>
   <img src=''></img>
@@ -39,5 +38,3 @@ document.documentElement.innerHTML += `
     width: 10%;
   }
 </style>`;
-
-</script>
