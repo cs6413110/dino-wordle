@@ -28,6 +28,7 @@ document.documentElement.innerHTML += `
     position: absolute;
     width: 100%;
     height: 10%;
+    margin: 0;
     bottom: 0;
   }
   input {
