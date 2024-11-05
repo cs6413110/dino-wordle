@@ -20,12 +20,14 @@ document.documentElement.innerHTML += `
     width: 50%;
     height: 100%;
     border: 1px solid red;
-    
+    margin-left: 25%;
+    margin-right: 25%;
   }
   #guess {
     width: 0;
     position: absolute;
     width: 100%;
+    height: 10%;
     bottom: 0;
   }
   input {
@@ -36,5 +38,6 @@ document.documentElement.innerHTML += `
   }
   button {
     width: 10%;
+    height: 100%;
   }
 </style>`;
