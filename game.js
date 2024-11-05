@@ -42,3 +42,8 @@ document.documentElement.innerHTML += `
     height: 100%;
   }
 </style>`;
+const answer = ;
+const check = (guess) => {
+  if (guess.toLowerCase() === answer.toLowerCase()) return true;
+  return guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0);
+}
