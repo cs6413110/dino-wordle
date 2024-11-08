@@ -5,11 +5,11 @@ document.documentElement.innerHTML += `
 </div>
 <div id='centered'>
   <div id='name'></div>
-  <img src=''></img>
+  <img id='image' src=''></img>
 </div>
 <div id='guess'>
-  <input id='' />
-  <button>Guess</button>
+  <input id='input' />
+  <button id='guess'>Guess</button>
 </div>
 <style>
   html, body {
@@ -66,8 +66,13 @@ document.documentElement.innerHTML += `
     background-color: lightblue;
   }
 </style>`;
-const answer = '';
-const check = (guess) => {
+const time = Math.floor(Date.now()/(24*60*60*1000)), current = dinos[time%dino.length], answer = current.name;
+document.getElementById('image').src = current.image;
+
+
+
+const check = guess => {
   if (guess.toLowerCase() === answer.toLowerCase()) return true;
-  return guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0);
+  alert(guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0));
 }
+document.getElementById('guess').addEventListener('click', e => check(document.getElementById('input').value));
