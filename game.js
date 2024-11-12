@@ -85,13 +85,13 @@ script.onload = e => {
   document.getElementById('button').addEventListener('click', e => {
     let n = check(input.value);
     if (!n) {
-      document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)} - ${guesses}`+(guesses > 1 ? 'Attempts' : 'Attempt');
+      document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)} - ${guesses} `+(guesses > 1 ? 'Attempts' : 'Attempt');
       input.style.backgroundColor = 'lightgreen';
       input.disabled = true;
     } else {
       if (n === 0) return alert(`Check letter arrangement! You're close!`);
       if (n < 6) alert(`You are ${n} letters off!`); else alert('Incorrect!');
-      input.style.backgroundColor = 'lightred';
+      input.style.backgroundColor = 'red';
     }
   });
   input.addEventListener('keydown', e => (input.style.backgroundColor = 'white'));
