@@ -7,7 +7,7 @@ document.documentElement.innerHTML += `
 </div>
 <div id='guess'>
   <input id='input' />
-  <button id='guess'>Guess</button>
+  <button id='button'>Guess</button>
 </div>
 <style>
   html, body {
@@ -80,7 +80,7 @@ script.onload = e => {
     for (const c of min) temp = temp.replace(c, '');
     return temp.length;
   }
-  document.getElementById('guess').addEventListener('click', e => {
+  document.getElementById('button').addEventListener('click', e => {
     let n = check(document.getElementById('input').value);
     if (!n) {
       document.getElementById('name').innerHTML = `<h1>${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}</h1>`;
