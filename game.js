@@ -81,17 +81,18 @@ script.onload = e => {
     const b = guess.length < answer.length, min = b ? guess : answer, max = b ? answer : guess;
     let temp = max.toLowerCase();
     for (const c of min.toLowerCase()) temp = temp.replace(c, '');
+    if (max.toLowerCase() === min.toLowerCase()) return -1;
     return temp.length;
   }
   document.getElementById('button').addEventListener('click', e => {
     let n = check(input.value);
-    if (!n) {
+    if (n === -1) {
       document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)} - ${guesses} `+(guesses > 1 ? 'Attempts' : 'Attempt');
       input.style.backgroundColor = 'lightgreen';
       input.disabled = true;
     } else {
       if (n === 0) return alert(`Check letter arrangement! You're close!`);
-      if (n < 6) alert(`You are ${n} letters off!`); else alert('Incorrect!');
+      if (n < 4) alert(`You are ${n} letters off!`); else alert('Incorrect!');
       input.style.backgroundColor = 'red';
     }
   });
