@@ -1,5 +1,5 @@
 document.documentElement.innerHTML += `
-<script src='https://cs6413110.github.io/dino-wordle/config.js'></script>
+<script src='https://cs6413110.github.io/dino-wordle/config.js' id='dinos'></script>
 <div id='top'>
   <h1>Dino of the Day</h1>
 </div>
@@ -66,10 +66,12 @@ document.documentElement.innerHTML += `
     background-color: lightblue;
   }
 </style>`;
-const time = Math.floor(Date.now()/(24*60*60*1000)), current = dinos[time%dinos.length], answer = current.name;
-document.getElementById('image').src = current.image;
-const check = guess => {
-  if (guess.toLowerCase() === answer.toLowerCase()) return true;
-  alert(guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0));
+document.getElementById('dinos').onload = e => {
+  const time = Math.floor(Date.now()/(24*60*60*1000)), current = dinos[time%dinos.length], answer = current.name;
+  document.getElementById('image').src = current.image;
+  const check = guess => {
+    if (guess.toLowerCase() === answer.toLowerCase()) return true;
+    alert(guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0));
+  }
+  document.getElementById('guess').addEventListener('click', e => check(document.getElementById('input').value));
 }
-document.getElementById('guess').addEventListener('click', e => check(document.getElementById('input').value));
