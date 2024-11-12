@@ -66,8 +66,11 @@ document.documentElement.innerHTML += `
     background-color: lightblue;
   }
 </style>`;
+let time, current, answer;
 document.getElementById('dinos').onload = e => {
-  const time = Math.floor(Date.now()/(24*60*60*1000)), current = dinos[time%dinos.length], answer = current.name;
+  time = Math.floor(Date.now()/(24*60*60*1000));
+  current = dinos[time%dinos.length];
+  answer = current.name;
   document.getElementById('image').src = current.image;
   const check = guess => {
     if (guess.toLowerCase() === answer.toLowerCase()) return true;
