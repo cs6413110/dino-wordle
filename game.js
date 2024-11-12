@@ -68,27 +68,33 @@ document.documentElement.innerHTML += `
 </style>`;
 let time, current, answer;
 const script = document.createElement('SCRIPT');
+const input = document.getElementById('input');
 script.onload = e => {
   time = Math.floor(Date.now()/(24*60*60*1000));
   current = dinos[time%dinos.length];
   answer = current.name;
   document.getElementById('image').src = current.image;
+  let guesses = 0;
   const check = guess => {
+    guesses++;
     const b = guess.length < answer.length, min = b ? guess : answer, max = b ? answer : guess;
     let temp = max.toLowerCase();
     for (const c of min.toLowerCase()) temp = temp.replace(c, '');
     return temp.length;
   }
   document.getElementById('button').addEventListener('click', e => {
-    let n = check(document.getElementById('input').value);
+    let n = check(input.value);
     if (!n) {
-      document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}`;
-      alert('Correct');
+      document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)} - ${guesses}`+(guesses > 1 ? 'Attempts' : 'Attempt');
+      input.style.backgroundColor = 'lightgreen';
+      input.disabled = true;
     } else {
       if (n === 0) return alert(`Check letter arrangement! You're close!`);
       if (n < 6) alert(`You are ${n} letters off!`); else alert('Incorrect!');
+      input.style.backgroundColor = 'lightred';
     }
   });
+  input.addEventListener('keydown', e => (input.style.backgroundColor = 'white'));
 }
 script.src = 'https://cs6413110.github.io/dino-wordle/config.js';
 document.documentElement.appendChild(script);
