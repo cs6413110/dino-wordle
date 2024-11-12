@@ -67,7 +67,6 @@ document.documentElement.innerHTML += `
 </style>`;
 let time, current, answer;
 const script = document.createElement('SCRIPT');
-script.src = 'https://cs6413110.github.io/dino-wordle/game.js';
 script.onload = e => {
   time = Math.floor(Date.now()/(24*60*60*1000));
   current = dinos[time%dinos.length];
@@ -79,3 +78,5 @@ script.onload = e => {
   }
   document.getElementById('guess').addEventListener('click', e => check(document.getElementById('input').value));
 }
+script.src = 'https://cs6413110.github.io/dino-wordle/config.js';
+document.documentElement.appendChild(script);
