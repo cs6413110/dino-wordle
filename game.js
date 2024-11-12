@@ -77,7 +77,7 @@ script.onload = e => {
   document.getElementById('image').src = current.image;
   const check = guess => {
     if (guess.toLowerCase() === answer) return true;
-    return guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0));
+    return guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0);
   }
   document.getElementById('guess').addEventListener('click', e => {
     let n = check(document.getElementById('input').value);
