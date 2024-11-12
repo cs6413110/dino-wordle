@@ -1,4 +1,4 @@
-document.body.innerHTML += `
+document.documentElement.innerHTML += `
 <script src='https://cs6413110.github.io/dino-wordle/config.js'></script>
 <div id='top'>
   <h1>Dino of the Day</h1>
