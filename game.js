@@ -46,6 +46,9 @@ document.documentElement.innerHTML += `
     margin: 0;
     bottom: 0;
   }
+  img {
+    height: 100%;
+  }
   input {
     width: 89%;
     height: 100%;
@@ -74,11 +77,12 @@ script.onload = e => {
   document.getElementById('image').src = current.image;
   const check = guess => {
     if (guess.toLowerCase() === answer) return true;
-    alert(guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0));
+    return guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0));
   }
   document.getElementById('guess').addEventListener('click', e => {
     let n = check(document.getElementById('input').value);
-    if (isNaN(n) && n) {
+    if (n === true) {
+      document.getElementById('name').innerHTML = `<h1>${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}</h1>`;
       alert('Correct');
     } else {
       if (n < 8) alert(`You are ${n} letters off!`); else alert('Incorrect!');
