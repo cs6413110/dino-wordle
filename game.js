@@ -75,17 +75,18 @@ script.onload = e => {
   document.getElementById('image').src = current.image;
   const check = guess => {
     const b = guess.length < answer.length, min = b ? guess : answer, max = b ? answer : guess;
-    let temp = max;
-    for (const c of min) temp = temp.replace(c, '');
+    let temp = max.toLowerCase();
+    for (const c of min.toLowerCase()) temp = temp.replace(c, '');
     return temp.length;
   }
   document.getElementById('button').addEventListener('click', e => {
     let n = check(document.getElementById('input').value);
     if (!n) {
-      document.getElementById('name').innerHTML = `<h1>${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}</h1>`;
+      document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}`;
       alert('Correct');
     } else {
-      if (n < 8) alert(`You are ${n} letters off!`); else alert('Incorrect!');
+      if (n === 0) return alert(`Check letter arrangement! You're close!`);
+      if (n < 6) alert(`You are ${n} letters off!`); else alert('Incorrect!');
     }
   });
 }
