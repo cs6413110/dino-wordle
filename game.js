@@ -1,9 +1,8 @@
 document.documentElement.innerHTML += `
 <div id='top'>
-  <h1>Dino of the Day</h1>
+  <h1 id='name'>Dino of the Day</h1>
 </div>
 <div id='centered'>
-  <div id='name'></div>
   <img id='image' src=''></img>
 </div>
 <div id='guess'>
@@ -76,12 +75,14 @@ script.onload = e => {
   answer = current.name;
   document.getElementById('image').src = current.image;
   const check = guess => {
-    if (guess.toLowerCase() === answer) return true;
-    return guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0);
+    const b = guess.length < answer.length, min = b ? guess : answer, max = b ? answer : guess;
+    let temp = max;
+    for (const c of min) temp = temp.replace(c, '');
+    return temp.length;
   }
   document.getElementById('guess').addEventListener('click', e => {
     let n = check(document.getElementById('input').value);
-    if (n === true) {
+    if (!n) {
       document.getElementById('name').innerHTML = `<h1>${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)}</h1>`;
       alert('Correct');
     } else {
