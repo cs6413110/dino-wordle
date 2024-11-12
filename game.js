@@ -1,6 +1,7 @@
 document.documentElement.innerHTML += `
+<title>Dino-dle</title>
 <div id='top'>
-  <h1 id='name'>Dino of the Day</h1>
+  <h1 id='name'>Dino-dle</h1>
 </div>
 <div id='centered'>
   <img id='image' src=''></img>
