@@ -31,11 +31,7 @@ document.documentElement.innerHTML += `
     margin: 0;
   }
   #centered {
-    width: 50%;
     height: 100%;
-    border: 1px solid red;
-    margin-left: 25%;
-    margin-right: 25%;
   }
   #guess {
     position: absolute;
@@ -47,6 +43,9 @@ document.documentElement.innerHTML += `
   }
   img {
     height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   input {
     width: 89%;
