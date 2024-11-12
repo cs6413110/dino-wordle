@@ -73,10 +73,17 @@ script.onload = e => {
   answer = current.name;
   document.getElementById('image').src = current.image;
   const check = guess => {
-    if (guess.toLowerCase() === answer.toLowerCase()) return true;
-    alert(guess.toLowerCase().split('').reduce((a,c,i) => c === answer.split()[i] ? a+1 : a, 0));
+    if (guess.toLowerCase() === answer) return true;
+    alert(guess.toLowerCase().split('').reduce((a, c, i) => c === answer.split('')[i] ? a+1 : a, 0));
   }
-  document.getElementById('guess').addEventListener('click', e => check(document.getElementById('input').value));
+  document.getElementById('guess').addEventListener('click', e => {
+    let n = check(document.getElementById('input').value);
+    if (isNaN(n) && n) {
+      alert('Correct');
+    } else {
+      if (n < 8) alert(`You are ${n} letters off!`); else alert('Incorrect!');
+    }
+  });
 }
 script.src = 'https://cs6413110.github.io/dino-wordle/config.js';
 document.documentElement.appendChild(script);
