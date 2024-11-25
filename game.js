@@ -89,7 +89,7 @@ script.onload = e => {
     if (n === -1) {
       document.getElementById('name').innerHTML = `${answer.charAt(0).toUpperCase()}${answer.slice(1, answer.length)} - ${guesses} `+(guesses > 1 ? 'Attempts' : 'Attempt');
       input.style.backgroundColor = 'lightgreen';
-      input.disabled = true;
+      input.disabled = document.getElementById('button').disabled = true;
     } else {
       if (n === 0) return alert(`Check letter arrangement! You're close!`);
       if (n < 4) alert(`You are ${n} letters off!`); else alert('Incorrect!');
