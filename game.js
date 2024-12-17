@@ -71,7 +71,7 @@ let time, current, answer;
 const script = document.createElement('SCRIPT');
 const input = document.getElementById('input');
 script.onload = e => {
-  time = Math.floor(Date.now()/*/(24*60*60*1000)*/);
+  time = Math.floor(Date.now()/(24*60*60*1000));
   current = dinos[time%dinos.length];
   answer = current.name;
   document.getElementById('image').src = current.image;
